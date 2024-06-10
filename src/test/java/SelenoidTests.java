@@ -28,7 +28,7 @@ public class SelenoidTests {
     }
 
     @Test
-    void checkTotalWithGiven(){
+    void checkTotalWithGiven() {
         given()
                 .log().all()
                 .when()
@@ -40,7 +40,7 @@ public class SelenoidTests {
     }
 
     @Test
-    void checkTotalWithSomeLog(){
+    void checkTotalWithSomeLog() {
         given()
                 .when()
                 .log().uri()
@@ -51,5 +51,32 @@ public class SelenoidTests {
                 .statusCode(200)
                 .body("total", is(20));
     }
+
+    @Test
+    void checkChromeVersion() {
+        given()
+                .when()
+                .log().uri()
+                .get("https://selenoid.autotests.cloud/status")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("browsers.chrome",hasKey("100.0"));
+    }
+
+    @Test
+    void checkResponseDadPractice() {
+        given()
+                .when()
+                .log().uri()
+                .get("https://selenoid.autotests.cloud/status")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("browsers.chrome",hasKey("100.0"));
+    }
 }
+
 

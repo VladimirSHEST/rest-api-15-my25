@@ -96,7 +96,7 @@ public class SelenoidTests {
         assertEquals(expectedTotal,actualTotal);
     }
 
-    /*
+
     /*
         1. Make request to https://selenoid.autotests.cloud/wd/hub/status
         2. Get response { value: { message: "Selenoid 1.10.7 built at 2021-11-21_05:46:32AM", ready: true } }
@@ -115,11 +115,26 @@ public class SelenoidTests {
     }
 
     @Test
-    void checkWdHubStatus(){
+    void checkWdHubStatusURL(){
         given()
                 .when()
                 .log().uri()
                 .get("https://user1:1234@selenoid.autotests.cloud/wd/hub/status")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200)
+                .body("value.message", is("Selenoid 1.11.2 built at 2024-01-25_02:58:52PM"));
+    }
+
+
+    @Test
+    void checkWdHubStatus(){
+        given()
+                .auth().basic("user1","1234")
+                .log().uri()
+                .when()
+                .get("https://selenoid.autotests.cloud/wd/hub/status")
                 .then()
                 .log().status()
                 .log().body()

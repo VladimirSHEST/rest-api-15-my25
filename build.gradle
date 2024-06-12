@@ -35,7 +35,9 @@ dependencies {
 //            'io.qameta.allure:allure-assertj:3.19.0',       // не совместимость
             'io.qameta.allure:allure-rest-assured:2.19.0',   //для api тестов
             'org.aspectj:aspectjweaver:1.9.20',
-            'io.rest-assured:rest-assured:5.3.0'
+            'io.rest-assured:rest-assured:5.3.0',
+
+            'com.fasterxml.jackson.core:jackson-databind:2.14.2'
 
     )
 }

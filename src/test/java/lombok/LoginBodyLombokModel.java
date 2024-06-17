@@ -12,13 +12,12 @@ import static org.hamcrest.Matchers.is;
 /*
     1. Make POST request to https://reqres.in/api/login
     with body { "email": "eve.holt@reqres.in", "password": "cityslicka" }
-    2. Get response { "token": "QpwL5tke4Pnpja7X4" }
+    2. response { "token": "QpwL5tke4Pnpja7X4" }
     3. Check token is QpwL5tke4Pnpja7X4
  */
 public class LoginBodyLombokModel {
     @Test
-    void loginTest(){
-
+    void loginTest(){                                                                      // с моделями
         LombokLoginBodyModel lombokLoginBodyModel = new LombokLoginBodyModel();
         lombokLoginBodyModel.setEmail("eve.holt@reqres.in");
         lombokLoginBodyModel.setPassword("cityslicka");
@@ -40,13 +39,13 @@ public class LoginBodyLombokModel {
     }
 
     @Test
-    void allureLoginTest(){
+    void allureLoginTest(){                                                           //с моделями и обычный аллюр
         LombokLoginBodyModel lombokLoginBodyModel = new LombokLoginBodyModel();
         lombokLoginBodyModel.setEmail("eve.holt@reqres.in");
         lombokLoginBodyModel.setPassword("cityslicka");
 
         LombokLoginResponsModel lombokLoginResponsModel = given()
-                .filter( new AllureRestAssured())
+                .filter( new AllureRestAssured())                                       // тут аллюр
                 .log().uri()
                 .log().body()
                 .contentType(JSON)
@@ -62,13 +61,13 @@ public class LoginBodyLombokModel {
         assertThat(lombokLoginResponsModel.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
     }
     @Test
-    void customAllureLoginTest(){
+    void customAllureLoginTest(){                                                       //с моделями и красивый аллюр
         LombokLoginBodyModel lombokLoginBodyModel = new LombokLoginBodyModel();
         lombokLoginBodyModel.setEmail("eve.holt@reqres.in");
         lombokLoginBodyModel.setPassword("cityslicka");
 
         LombokLoginResponsModel lombokLoginResponsModel = given()
-                .filter(withCustomTemplates())
+                .filter(withCustomTemplates())                                            // тут кастом аллюр
                 .log().uri()
                 .log().body()
                 .contentType(JSON)

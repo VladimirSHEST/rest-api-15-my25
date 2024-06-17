@@ -69,7 +69,7 @@ public class SelenoidTests {
     }
 
     @Test
-    void checkResponseDadPractice() {
+    void checkResponseBadPractice() { // не доделал тест
         given()
                 .when()
                 .log().uri()
@@ -82,10 +82,10 @@ public class SelenoidTests {
     }
 
     @Test
-    void checkResponseGoodPractice() {
-        Integer expectedTotal = 20;
+    void checkResponseGoodPractice() {  // хотим сравнить одно ожидаемое значение и реальное
+        Integer expectedTotal = 20;     // значение выносим в переменную
 
-        Integer actualTotal = given()
+        Integer actualTotal = given()   // реальное значение будет равно
                 .when()
                 .log().uri()
                 .get("https://selenoid.autotests.cloud/status")
@@ -95,9 +95,8 @@ public class SelenoidTests {
                 .statusCode(200)
                 .extract().path("total");
 
-        assertEquals(expectedTotal,actualTotal);
+        assertEquals(expectedTotal,actualTotal);  // сравниваем
     }
-
 
     /*
         1. Make request to https://selenoid.autotests.cloud/wd/hub/status

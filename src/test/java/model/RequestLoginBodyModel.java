@@ -1,6 +1,6 @@
 package model;
 
-public class LoginBodyModel {
+public class RequestLoginBodyModel {
     //   "{ \"email\": \"eve.holt@reqres.in\", \"password\": \"cityslicka\" }"
 
     String email;

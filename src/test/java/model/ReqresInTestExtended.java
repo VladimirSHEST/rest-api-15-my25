@@ -35,7 +35,7 @@ public class ReqresInTestExtended {
     @Test
     void loginTest(){
 
-        LoginBodyModel loginBodyModel = new LoginBodyModel();
+        RequestLoginBodyModel loginBodyModel = new RequestLoginBodyModel();
         loginBodyModel.setEmail("eve.holt@reqres.in");
         loginBodyModel.setPassword("cityslicka");
 
